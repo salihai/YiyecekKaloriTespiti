@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Görüntü Sınıflandırma</title>
+    <style>
+        #preview {
+                max-width: 400px;
+                max-height: 600px;
+                margin-left:700px;
+
+            }
+		body {
+		  font-family: Arial, sans-serif;
+		  margin: 0;
+		  padding: 0;
+		  height: 650px;
+		  background-image: url("static/writing-pad-g84e9c6587_1280.jpg");
+		  background-size: cover;
+		}
+		h1 {
+		    color: white;
+			font-size: 30px;
+			margin-top: 20px;
+			margin-left:450px;
+			margin-bottom: 20px;
+		}
+		form {
+			background-color: white;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			margin: 20px auto;
+			max-width: 600px;
+			}
+
+		input[type=file] {
+			display: block;
+			margin: 10px 0;
+		}
+		button[type=submit] {
+			display: block;
+			margin: 10px auto;
+			padding: 10px 20px;
+
+			background-image: linear-gradient(
+				to bottom,
+				rgba(255, 165, 0, 0.5),
+				rgba(0, 128, 28, 0.5)
+				);
+
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+	</style>
+     <script>
+        function previewImage() {
+            var preview = document.querySelector('#preview');
+            var imageInput = document.querySelector('#image-input');
+            var file = imageInput.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>FOOD CALORIES DETECTION</h1>
+    <form action="/classify" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" id="image-input" onchange="previewImage(event)">
+        <button type="submit">TAHMİN ET</button>
+    </form>
+    <img id="preview" src="#" >
+
+</body>
+</html>

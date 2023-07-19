@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sonuç</title>
+    <style>
+    body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-image: url("static/writing-pad-g84e9c6587_1280.jpg");
+		  	background-size: cover;
+		}
+		h1 {
+		    color: white;
+			font-size: 30px;
+			margin-top: 140px;
+			margin-bottom: 20px;
+			margin-left:750px;
+		}
+		 ul {
+		 margin-top: 50px;
+        margin-bottom: 20px;
+        margin-left:750px;
+
+
+        }
+
+        ul li {
+        font-size: 20px;
+
+        }
+
+		</style>
+</head>
+<body>
+    <h1>Sınıflandırma Sonucu:</h1>
+    <ul>
+    {% for predicted_class in predicted_classes %}
+        <li>{{ predicted_class }}</li>
+    {% endfor %}
+    </ul>
+    <ul>
+    {% for calorie in predicted_calorie  %}
+        <li>100 gr için ortalama değer: {{ calorie  }} kcal </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
